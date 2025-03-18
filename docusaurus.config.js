@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'My Tech Blog',
+  tagline: 'Read about working with APIs, AI, and other modern technologies',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -97,7 +97,7 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
             title: 'Docs',
