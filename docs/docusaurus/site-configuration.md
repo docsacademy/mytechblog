@@ -1,4 +1,8 @@
-# Site Configuration
+---
+sidebar_position: 3
+---
+
+# Configuring your Docusaurus site
 
 Before publishing your Docusaurus website, you must update its configuration to ensure it displays the correct branding and functions correctly on your chosen domain. In this section, we’ll edit the **docusaurus.config.js** file to:
 

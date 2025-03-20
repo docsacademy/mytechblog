@@ -2,46 +2,26 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Welcome!
 
-Let's discover **Docusaurus in less than 5 minutes**.
+The **Tutorials** section is designed to help you get started with our documentation platform and tools. This section provides step-by-step guides to assist you in setting up, configuring, and working with various tools related to documentation and API management.
 
-## Getting Started
+## What You Will Find Here
 
-Get started by **creating a new site**.
+* **Getting Started with Docusaurus** <br /> Learn how to set up and use Docusaurus for creating and maintaining documentation.
+* **Working with AI** <br /> A dedicated section covering various aspects of working with AI, including automation, content generation, and best practices.
+* **OpenAPI Specification** <br /> Learn how to create, document, and maintain OpenAPI definitions.
+* **Using API Tools** <br /> Explore tools like Postman, Stoplight, and Redocly for API testing and documentation.
+* **Creating Content in Confluence** <br /> Step-by-step guides on how to structure and manage documentation in Confluence.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Who Should Use These Tutorials?
 
-### What you'll need
+These tutorials are designed for technical writers, developers, and documentation managers who want to learn how to efficiently use Docusaurus, API documentation tools, and best practices for working with APIs and AI-driven solutions.
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## How to Use This Section
 
-## Generate a new site
+* **Follow the guides step by step** <br /> Tutorials include detailed instructions, screenshots, and code samples where applicable.
+* **Use the search feature** <br /> Quickly find tutorials related to your specific task.
+* **Check related documentation** <br /> Tutorials often link to reference materials for deeper insights.
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Start exploring our tutorials to enhance your documentation workflow and API management skills!

@@ -48,7 +48,7 @@ const config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
+        blog: false, /* {
           showReadingTime: true,
           feedOptions: {
             type: ['rss', 'atom'],
@@ -65,7 +65,7 @@ const config = {
         },
         theme: {
           customCss: './src/css/custom.css',
-        },
+        }, */
       }),
     ],
   ],
@@ -86,14 +86,14 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Tutorials',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          /* {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/docsacademy/mytechblog',
             label: 'GitHub',
             position: 'right',
-          },
+          }, */
         ],
       },
       prism: {
