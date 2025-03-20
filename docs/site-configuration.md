@@ -35,9 +35,29 @@ Before publishing your Docusaurus website, you must update its configuration to 
     ```
 6. Find the **url** property and replace 'https://example.com' with the actual domain where your site will be live. This ensures that all generated links and paths reflect your final hosting environment.
 
-7. Locate the **footer** property and customize the follter according to your preferences. For example, you can:
-   
+7. Look for the **navbar** section inside `themeConfig`.
+
+    ```js
+    themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      // Replace with your project's social card
+      image: 'img/docusaurus-social-card.jpg',
+      navbar: {
+        title: 'My Site',
+        logo: {
+          alt: 'My Site Logo',
+          src: 'img/logo.svg',
+        },
+        ...
     ```
+
+    * Modify the `title` to match your website's name.
+    * Change the default logo by replacing **img/logo.svg** with your own logo file.
+
+8. Locate the **footer** property and customize the follter according to your preferences. For example, you can:
+   
+    ```js
     footer: {
         style: 'light',
         links: [
@@ -67,6 +87,16 @@ Before publishing your Docusaurus website, you must update its configuration to 
     * Replace the existing links with your own.
     * Delete any links that you don't want to display.
     * Disable the footer by setting it to footer: false or removing it entirely from the configuration file.
+
+9. Customize or remove the GitHub link in the navbar.
+
+    ```js
+    {
+        href: 'https://github.com/facebook/docusaurus',
+        label: 'GitHub',
+        position: 'right',
+    },
+    ```
 
 After updating the configuration, start the local server by running npm run start and preview your site. Ensure that the homepage reflects the changes you made.
 
@@ -134,3 +164,58 @@ Your homepage consists of two main parts:
     ```
 
     ![Two-column layout](/img/docs/misc/docusaurus-two-columns.png)
+
+## Customizing styles
+
+Docusaurus uses [Infima](https://infima.dev/) as its underlying CSS framework. You have multiple options to customize your website:
+
+* **Global CSS**
+Site-wide styling through custom CSS files
+
+* **CSS Modules**
+Component-scoped styles
+
+* **CSS-in-JS**
+Through libraries like styled-components (requires additional setup)
+
+* **Tailwind CSS**
+Utility-first styling (requires additional setup)
+
+In this tutorial, we'll focus on the first approach - site-wide styling using custom CSS files.
+
+1. Find your global CSS file at **src/css/custom.css**. This is where you'll customize colors and other global styles.
+
+2. Locate the CSS rule for :root and update the color variables as needed. You can use the tool available at [Docusaurus Infima Styling](https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima) to define your color scheme. Simply specify the primary color, and the tool will automatically generate all other shades for you. For example:
+
+    ![Docusaurus Infima Styling](/img/docs/misc/docusaurus-infima-styling.png)
+
+    After generating the CSS styles, copy them and replace the corresponding variables in **src/css/custom.css**.
+
+    ```css
+    :root {
+    --ifm-color-primary: #4169e1; /* Your primary brand color */
+    --ifm-color-primary-dark: #3a5ecc;
+    --ifm-color-primary-darker: #3457bf;
+    --ifm-color-primary-darkest: #2a479d;
+    --ifm-color-primary-light: #5479e3;
+    --ifm-color-primary-lighter: #6889e6;
+    --ifm-color-primary-lightest: #7c99e9;
+    ```
+    
+If you want to update styles for both light and dark modes, you also need to replace the styles for the dark mode.
+
+    ```css
+    /* Dark mode adjustments */
+    [data-theme='dark'] {
+    --ifm-color-primary: #6889e6;
+    --ifm-color-primary-dark: #5479e3;
+    --ifm-color-primary-darker: #4169e1;
+    --ifm-color-primary-darkest: #3a5ecc;
+    --ifm-color-primary-light: #7c99e9;
+    --ifm-color-primary-lighter: #90a9ec;
+    --ifm-color-primary-lightest: #a4b9ef;
+    --ifm-background-color: #1e2125;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+    }
+
+    ```

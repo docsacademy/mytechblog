@@ -10,8 +10,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Website',
-  tagline: 'Read about many cool things',
+  title: 'My Tech Blog',
+  tagline: 'Tutorials and Articles on AI, APIs, and Tools',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -76,9 +76,9 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'Home',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'My TechBlog Logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -90,7 +90,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/docsacademy/mytechblog',
             label: 'GitHub',
             position: 'right',
           },

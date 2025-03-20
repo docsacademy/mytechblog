@@ -8,26 +8,25 @@ const FeatureList = [
     Svg: require('@site/static/img/home-apis.svg').default,
     description: (
       <>
-        Step-by-Step Guides to Learn, Build, and Integrate – Explore Our API Tutorials
+        Learn step by step, master API documentation with clarity and precision, and craft detailed references.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'AI Tutorials',
+    Svg: require('@site/static/img/home-ai.svg').default,
     description: (
       <>
-        afafafa
+        Unlock Artificial Intelligence, master innovation with ease, and stay ahead of the curve.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Content Creation & Tools',
+    Svg: require('@site/static/img/home-content-creation.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Create with confidence, document with clarity, and master the tools that bring your content to life.
       </>
     ),
   },
