@@ -62,10 +62,14 @@ const config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
-        },
+        }, */
         theme: {
           customCss: './src/css/custom.css',
-        }, */
+        },
+        gtag: {
+          trackingID: 'G-ZE5N528WX1',
+          anonymizeIP: true,
+        }
       }),
     ],
   ],
@@ -88,12 +92,12 @@ const config = {
             position: 'left',
             label: 'Tutorials',
           },
-          /* {to: '/blog', label: 'Blog', position: 'left'},
+          /* {to: '/blog', label: 'Blog', position: 'left'}, */
           {
             href: 'https://github.com/docsacademy/mytechblog',
             label: 'GitHub',
             position: 'right',
-          }, */
+          },
         ],
       },
       prism: {
