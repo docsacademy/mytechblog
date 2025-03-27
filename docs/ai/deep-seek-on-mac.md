@@ -145,9 +145,9 @@ When Chatbox opens, you’ll see a clean interface that looks a bit like a chat 
 
 ![Launching Chatbot AI](/img/docs/ai/ollama-launching-chatbox.png)
 
-## Connecting Chatbox to Ollama
+## Connecting Chatbox AI to Ollama
 
-Now we’ll link Chatbox with Ollama and choose the DeepSeek-R1 model as our AI assistant.
+Now we’ll link Chatbox AI with Ollama and choose the DeepSeek-R1 model as our AI assistant.
 
 1. Make sure that Ollama is running in the background. You can check this by opening http://localhost:11434 in your browser. If Ollama is active, the page will confirm that it's running and ready to serve model queries. If the page doesn’t load, start Ollama manually by running the following command in Terminal:
 
