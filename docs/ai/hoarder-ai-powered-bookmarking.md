@@ -1,128 +1,148 @@
 ---
-draft: true
+draft: false
 ---
 
-# Setting Up Hoarder on Your Mac
+# AI-Powered Bookmarking with Hoarder
 
-I'll guide you through the entire process of setting up Hoarder on your Mac, step by step.
+[Hoarder](https://hoarder.app/) is an open-source, self-hosted bookmark manager powered by AI that helps you save and organize web content. Unlike traditional bookmark systems, Hoarder features AI tagging, full-page archiving, powerful search, and mobile apps to access your content from anywhere.
 
-## 1. Install Prerequisites
+![Hoarder main page](/img/docs/ai/hoarder-website.png)
 
-First, make sure Docker Desktop is installed on your Mac:
+## Prerequisites
 
-1. If you don't have Docker Desktop yet, download it from [Docker's official website](https://www.docker.com/products/docker-desktop/).
+Hoarder offers several installation options, but using Docker Desktop is the easiest and most reliable way to get started. Docker Desktop includes both Docker and Docker Compose, which are required to run Hoarder.
+
+If Docker Desktop isn’t installed yet, follow these steps to set it up:
+
+1. Download it from [Docker's official website](https://docs.docker.com/desktop/setup/install/mac-install/).
 2. Install Docker Desktop by dragging it to your Applications folder.
 3. Launch Docker Desktop and wait for it to fully start (the whale icon in your menu bar will indicate when it's ready).
 
-Docker Desktop includes both Docker and Docker Compose, so you'll have everything you need.
+## Creating a directory for your Hoarder setup
 
-## 2. Create a Directory for Hoarder
+First, you'll create a dedicated directory to store all Hoarder-related files:
 
-Open Terminal (you can find it in Applications → Utilities, or search for it using Spotlight with ⌘+Space).
+1. Open Terminal.
 
-Create a new directory for Hoarder:
+2. Create a new directory with this command:
 
-```bash
-mkdir ~/hoarder-app
-cd ~/hoarder-app
-```
+    ```bash
+    $ mkdir ~/hoarder-app
+    ```
 
-## 3. Download the Docker Compose File
+3. Navigate into that directory:
 
-Mac doesn't come with `wget` by default, but you can use `curl` instead:
+    ```bash
+    $ cd ~/hoarder-app
+    ```
+This creates the **hoarder-app** in your home directory, giving you a clean, organized place for your Hoarder installation.
+
+## Downloading the Docker Compose file
+
+The Docker Compose file defines all the services Hoarder needs to run properly.
 
 ```bash
 curl -O https://raw.githubusercontent.com/hoarder-app/hoarder/main/docker/docker-compose.yml
 ```
 
-## 4. Create the Environment Variables File
+When you run this command, you should see progress information as the file downloads. This file contains the complete service setup for Hoarder, including database configuration and networking.
 
-Create a `.env` file in the same directory:
+## Setting up environment variables
 
-```bash
-touch .env
+Environment variables help you configure your Hoarder installation without modifying the core files. Here's how to set them up:
+
+1. Create an `.env` file in your hoarder-app directory:
+
+    ```bash
+    touch .env
+    ```
+
+2. You'll need to generate two secure random strings. In your Terminal, run this command twice:
+
+    ```bash
+    $ openssl rand -base64 36
+    ```
+3. Open the `.env` file with your favorite text editor, and add the following configuration:
+
+    ```
+    HOARDER_VERSION=release
+    NEXTAUTH_SECRET=your_first_random_string_here
+    MEILI_MASTER_KEY=your_second_random_string_here
+    NEXTAUTH_URL=http://localhost:3000
+    ```
+
+    What these variables do:
+
+    * `HOARDER_VERSION=release` tells Docker to use the latest stable version of Hoarder.
+    * `NEXTAUTH_SECRET` is used for securely encrypting session data.
+    * `MEILI_MASTER_KEY` secures the search functionality.
+    * `NEXTAUTH_URL` tells the authentication system where your app is located.
+
+4. Replace the placeholder values `your_first_random_string_here` and `your_second_random_string_here` with your random strings.
+
+5. Save and close the file.
+
+## Configuring AI tagging with OpenAI
+
+One of Hoarder's most powerful features is automatic AI tagging of your bookmarks. To enable this:
+
+1. You'll need an OpenAI API key. If you don't have one yet:
+
+    * Go to OpenAI's platform.
+    * Create an account if needed.
+    * Navigate to the API keys section.
+    * Create a new API key and give it a name like **Hoarder app**.
+    * Copy the key (you won't be able to see it again!)
+
+2. Add the key to your `.env` file:
+
+    ```
+    OPENAI_API_KEY=your_openai_api_key_here
+    ```
+
+> OpenAI charges based on usage, but Hoarder's tagging uses minimal tokens, keeping costs very low. Most users spend only a few cents per month.
+
+If you prefer to keep everything local, you can use Ollama instead. This runs AI models locally on your Mac, though it requires more system resources.
+
+## Launching Hoarder
+
+Now you're ready to start Hoarder:
+
+1. In Terminal, make sure you're still in your `hoarder-app` directory (`cd ~/hoarder-app` if needed).
+2. Run this command to start Hoarder in the background:
+
+    ```bash
+    docker compose up -d
+    ```
+
+This will download all the necessary images (this might take a few minutes the first time). You'll see progress information for each service. When complete, all Hoarder services will be running in the background.
+
+To verify everything is running properly, you can check by running the following command:
+
+```
+$ docker compose ps
 ```
 
-Now open the file with a text editor:
+## Accessing your Hoarder installation
 
-```bash
-open -e .env
-```
+Once the services are up and running:
 
-Let's generate secure random strings for your configuration. In a new Terminal tab/window, run:
+1. Open your preferred web browser.
 
-```bash
-openssl rand -base64 36
-```
+2. Navigate to http://localhost:3000. You should see the Hoarder sign-in page.
 
-Run this command twice to get two different strings. Then add these values to your `.env` file:
+  ![Hoarder sign-in page](/img/docs/ai/hoarder-login-screen.png)
 
-```
-HOARDER_VERSION=release
-NEXTAUTH_SECRET=your_first_random_string_here
-MEILI_MASTER_KEY=your_second_random_string_here
-NEXTAUTH_URL=http://localhost:3000
-```
+3. Create your account and start hoarding your favorite content.
 
-Save and close the file.
+### Why do I need to create an account in Hoarder, even when running it locally?
 
-## 5. Set Up OpenAI (Optional but Recommended)
+Hoarder requires you to create a local account to manage your session and keep your data secure. Even if you're running Hoarder on your local machine without internet access, the authentication system helps:
 
-To enable automatic tagging, you'll need an OpenAI API key:
+* Protect your bookmarks and personal data
 
-1. Visit [OpenAI's website](https://platform.openai.com/signup) to create an account if you don't have one
-2. Go to the [API keys section](https://platform.openai.com/api-keys)
-3. Create a new secret key
-4. Add the key to your `.env` file:
+* Keep you logged in during your session
 
-```
-OPENAI_API_KEY=your_openai_api_key_here
-```
+* Support multiple users on the same installation (e.g. family or team members)
 
-Alternatively, if you prefer to use Ollama for local inference, [install Ollama](https://ollama.com/) separately.
-
-## 6. Start the Hoarder Service
-
-Return to your Terminal where you're in the `~/hoarder-app` directory and run:
-
-```bash
-docker compose up -d
-```
-
-This will download the necessary Docker images and start the services in the background. The first run might take a few minutes as it downloads all the required components.
-
-## 7. Access Hoarder
-
-Once the services are running, you can access Hoarder by:
-
-1. Opening your browser
-2. Navigating to http://localhost:3000
-3. You should see the Sign In page
-
-## 8. Optional: Enable Additional Features
-
-If you want to enable additional features like full page archival, full page screenshots, or additional inference languages, check the [configuration documentation](https://github.com/hoarder-app/hoarder/blob/main/docs/CONFIGURATION.md).
-
-## 9. Optional: Set Up Quick Sharing Extensions
-
-To make hoarding content faster, you can install:
-- Mobile apps
-- Browser extensions
-
-These can be found on the quick sharing page within the Hoarder application once you're logged in.
-
-## Updating Hoarder
-
-To update Hoarder in the future:
-
-- If you used `HOARDER_VERSION=release`, run:
-  ```bash
-  docker compose up --pull always -d
-  ```
-
-- If you pinned to a specific version, update your `.env` file with the new version number and run:
-  ```bash
-  docker compose up -d
-  ```
-
-Is there any specific part of the setup process you'd like me to explain in more detail?
+> Your account is completely local—no data is sent to external servers, and all credentials are stored securely in your laptop’s local database.
